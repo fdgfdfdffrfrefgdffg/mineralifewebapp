@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map with Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map1 {
+            width: 100%;
+            height: 100%;
+        }
+        #map2 {
+            height: 200px;
+        }
+    </style>
+</head>
+<body style="background-color: #cacaca;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">MineraLife</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Bosh sahifa</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./customers.html">Buyurtmachilar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="./orders.html">Buyurtmalar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./autos.html">Mashinalar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./products.html">Mahsulotlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dastavkachilar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">To'lovlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kontragent</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container mt-5">
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div id="map1"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h5 class="card-title">Yangi buyurtma qo'shish</h5>
+                            <form id="locationForm">
+                                <div class="mb-3">
+                                    <label for="orderName" class="form-label">FIO</label>
+                                    <input type="text" class="form-control" id="orderName" name="orderName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ownerID" class="form-label">Mijoz raqami</label>
+                                    <input type="number" class="form-control" id="ownerID" name="ownerID" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="InProductName" class="form-label">Mahsulot nomi</label>
+                                    <input type="text" class="form-control" id="InProductName" name="InProductName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="InProductCount" class="form-label">Mahsulot miqdori</label>
+                                    <input type="text" class="form-control" id="InProductCount" name="InProductCount" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="InViloyat" class="form-label">Viloyat</label>
+                                    <input type="text" class="form-control" id="InViloyat" name="InViloyat" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="InTuman" class="form-label">Tuman</label>
+                                    <input type="text" class="form-control" id="InTuman" name="InTuman" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="InSana" class="form-label">Sana</label>
+                                    <input type="date" class="form-control" id="InSana" name="InSana" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="InVaqt" class="form-label">Vaqt</label>
+                                    <input type="time" class="form-control" id="InVaqt" name="InVaqt" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="InNote" class="form-label">Eslatma</label>
+                                    <input type="text" class="form-control" id="InNote" name="InNote" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="InAuto" class="form-label">Auto</label>
+                                    <input type="text" class="form-control" id="InAuto" name="InAuto" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="InDastavka" class="form-label">Yetkazib berish</label>
+                                    <input type="checkbox" class="" id="InDastavka" name="InDastavka">
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Saqlash</button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-bottom p-3">
+                <form action="" class="joinlocate">
+                    <label for="InLongitute" class="form-label">Longitute</label>
+                    <input type="text" name="longitute" id="InLongitute" class="form-control">
+                    <label for="InLangitute" class="form-label">Langitute</label>
+                    <input type="text" name="langitute" id="InLangitute" class="form-control">
+                    <button type="button" id="searchButton" class="btn btn-success mt-3">Qidirish</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5 p-5">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th>FIO</th>
+                            <th>Mijoz</th>
+                            <th>Mahsulot</th>
+                            <th>Miqdori</th>
+                            <th>Tanlash</th>
+                        </tr>
+                    </thead>
+                    <tbody id="addressTable">
+                        <!-- Jadval qatorlari bu yerda bo'ladi -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div class="card  bg-dark text-white">
+                    <div class="card-header">
+                        <div id="map2"></div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="OutOrderID">Buyurtmani tanlashingiz mumkin.</h5>
+                        <p class="card-text" id="OutOrderFio"></p>
+                        <p class="card-text" id="OutOrderCustomer"></p>
+                        <p class="card-text" id="OutOrderProduct"></p>
+                        <p class="card-text" id="OutOrderCount"></p>
+                        <p class="card-text" id="OutOrderViloyat"></p>
+                        <p class="card-text" id="OutOrderTuman"></p>
+                        <p class="card-text" id="OutOrderSana"></p>
+                        <p class="card-text" id="OutOrderVaqt"></p>
+                        <p class="card-text" id="OutOrderEslatma"></p>
+                        <p class="card-text" id="OutOrderAuto"></p>
+                        <p class="card-text" id="OutOrderDastavka"></p>
+                        <button class="btn btn-danger" id="deleteButton">O'chirish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+       <script src="./scripts/orders.js"></script>
+</body>
+</html>

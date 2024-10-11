@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map with Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        #map1 {
+            width: 100%;
+            height: 100%;
+        }
+        #map2 {
+            height: 200px;
+        }
+    </style>
+</head>
+<body style="background-color: #cacaca;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">MineraLife</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Bosh sahifa</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./customers.html">Buyurtmachilar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./orders.html">Buyurtmalar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./autos.html">Mashinalar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Mahsulotlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dastavkachilar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">To'lovlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kontragent</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container mt-5">
+        <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Yangi mashina qo'shish</h5>
+                        <form id="ProductsForm">
+                            <div class="mb-3">
+                                <label for="InFio" class="form-label">Fio</label>
+                                <input type="text" class="form-control" id="InFio" name="InFio" required maxlength="100" minlength="1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="InPul" class="form-label">Pul</label>
+                                <input type="text" class="form-control" id="InPul" name="InPul" required maxlength="100" minlength="1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="InKod" class="form-label">Kod</label>
+                                <input type="text" class="form-control" id="InKod" name="InKod" required maxlength="50" minlength="1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="InAsosiy_mahsulot" class="form-label">Asosiy mahsulot</label>
+                                <input type="checkbox" class="form-check-input" id="InAsosiy_mahsulot" name="InAsosiy_mahsulot">
+                            </div>
+                            <div class="mb-3">
+                                <label for="InEslatma" class="form-label">Eslatma</label>
+                                <textarea class="form-control" id="InEslatma" name="InEslatma" required maxlength="300" minlength="1"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Saqlash</button>
+                        </form>
+                        
+                        
+                        
+                    </div>
+        </div>
+    </div>
+    <div class="container mt-5 p-5">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fio</th>
+                            <th>Tanlash</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTable">
+                        <!-- Jadval qatorlari bu yerda bo'ladi -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title" id="OutProductID">Mahsulotni tanlashingiz mumkin.</h5>
+                        <p class="card-text" id="OutProductFio"></p>
+                        <p class="card-text" id="OutProductPul"></p>
+                        <p class="card-text" id="OutProductKod"></p>
+                        <p class="card-text" id="OutProductAsosiyMahsulot"></p>
+                        <p class="card-text" id="OutProductEslatma"></p>
+                        <button class="btn btn-danger" id="deleteButton">O'chirish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="./scripts/products..js"></script>
+</body>
+</html>
